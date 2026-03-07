@@ -36,9 +36,9 @@ const { values: args } = parseArgs({
 
 const mode = args.mode;
 const delay = parseFloat(args.delay);
-const wsPort = parseInt(args["ws-port"]);
+const wsPort = parseInt(process.env.WS_PORT || args["ws-port"]);
 const pollInterval = parseFloat(args["poll-interval"]);
-const apiPort = parseInt(args["api-port"]);
+const apiPort = parseInt(process.env.PORT || args["api-port"]);
 
 async function main() {
   if (!CONTRACT_ADDRESS) {
