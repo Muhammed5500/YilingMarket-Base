@@ -136,9 +136,16 @@ async function runOrchestrateMode() {
   console.log();
 
   // Start services
-  broadcaster.start();
   setSharedState(marketClient, orchestrator);
-  startApiServer(apiPort);
+  const httpServer = startApiServer(apiPort);
+
+  // In production (Railway), attach WS to the same HTTP server
+  // Locally, run WS on a separate port
+  if (process.env.PORT) {
+    broadcaster.attachToServer(httpServer);
+  } else {
+    broadcaster.start();
+  }
 
   const watcher = new MarketWatcher({
     marketClient,
@@ -194,9 +201,14 @@ async function runWatchMode() {
   console.log(`  Dashboard : frontend/index.html (ws://localhost:${wsPort})`);
   console.log();
 
-  broadcaster.start();
   setSharedState(marketClient, null);
-  startApiServer(apiPort);
+  const httpServer = startApiServer(apiPort);
+
+  if (process.env.PORT) {
+    broadcaster.attachToServer(httpServer);
+  } else {
+    broadcaster.start();
+  }
 
   let baseline = await marketClient.getMarketCount();
   console.log(`[Watcher] Baseline: ${baseline} markets`);

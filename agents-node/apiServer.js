@@ -144,8 +144,10 @@ export function startApiServer(port = 8000) {
     }
   });
 
-  app.listen(port, "0.0.0.0", () => {
+  const server = app.listen(port, "0.0.0.0", () => {
     console.log(`[API] REST server running on http://0.0.0.0:${port}`);
     console.log(`[API] Docs: http://localhost:${port}/api/health`);
   });
+
+  return server;
 }

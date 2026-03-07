@@ -2,7 +2,7 @@ export const CONTRACT_ADDRESS = "0x100647AC385271d5f955107c5C18360B3029311c" as 
 export const CHAIN_ID = 84532;
 export const RPC_URL = "https://sepolia.base.org";
 export const EXPLORER_URL = "https://sepolia.basescan.org";
-export const WS_URL = "ws://localhost:8765";
+export const WS_URL = process.env.NEXT_PUBLIC_WS_URL || "";
 
 export const CONTRACT_ABI = [
   {

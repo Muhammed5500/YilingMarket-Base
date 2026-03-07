@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { MarketListItem } from "@/lib/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 // Hidden test markets (spam/test questions)
 const HIDDEN_MARKET_IDS = new Set([4, 6, 7, 9]);

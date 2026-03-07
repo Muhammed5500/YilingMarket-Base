@@ -41,7 +41,7 @@ export function useMarketHistory(marketId: number) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    const API = process.env.NEXT_PUBLIC_API_URL || "";
 
     Promise.all([
       fetch(`${API}/api/markets/${marketId}`).then((r) => r.ok ? r.json() : null),

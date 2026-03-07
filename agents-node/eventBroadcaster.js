@@ -9,9 +9,21 @@ export class EventBroadcaster {
     this.wss = null;
   }
 
+  /** Start standalone WS server on its own port (local dev) */
   start() {
     this.wss = new WebSocketServer({ port: this.port, host: "0.0.0.0" });
+    this._attachHandlers();
+    console.log(`[EventBroadcaster] WebSocket server running on ws://0.0.0.0:${this.port}`);
+  }
 
+  /** Attach WS to an existing HTTP server (for Railway single-port) */
+  attachToServer(httpServer) {
+    this.wss = new WebSocketServer({ server: httpServer, path: "/ws" });
+    this._attachHandlers();
+    console.log(`[EventBroadcaster] WebSocket attached to HTTP server at /ws`);
+  }
+
+  _attachHandlers() {
     this.wss.on("connection", (ws) => {
       this.clients.add(ws);
       console.log(`[EventBroadcaster] Client connected (${this.clients.size} total)`);
@@ -38,7 +50,6 @@ export class EventBroadcaster {
       console.error(`[EventBroadcaster] Server error: ${err.message}`);
     });
 
-    console.log(`[EventBroadcaster] WebSocket server running on ws://0.0.0.0:${this.port}`);
   }
 
   emit(eventType, data) {
