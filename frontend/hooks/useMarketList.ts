@@ -6,7 +6,7 @@ import type { MarketListItem } from "@/lib/types";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 // Hidden test markets (spam/test questions)
-const HIDDEN_MARKET_IDS = new Set([4, 6, 7, 9]);
+const HIDDEN_MARKET_IDS = new Set<number>([]);
 
 export function useMarketList() {
   const [markets, setMarkets] = useState<MarketListItem[]>([]);
