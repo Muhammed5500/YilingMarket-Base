@@ -9,7 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
-import { ChevronDown, ChevronUp, Lock, Loader2 } from "lucide-react";
+import { ChevronDown, ChevronUp, Lock, Loader2, AlertTriangle } from "lucide-react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 interface CreateMarketFormProps {
   onClose?: () => void;
@@ -34,11 +36,34 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
     hash: txHash,
   });
 
+  const [isValidating, setIsValidating] = useState(false);
+  const [validationError, setValidationError] = useState("");
+
   const cost = Number(k) * Number(r) + Number(b);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!question.trim()) return;
+
+    // Validate question via AI
+    setIsValidating(true);
+    setValidationError("");
+    try {
+      const res = await fetch(`${API_URL}/api/validate-question`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: question.trim() }),
+      });
+      const result = await res.json();
+      if (!result.valid) {
+        setValidationError(result.reason || "This question is not suitable for this market type.");
+        setIsValidating(false);
+        return;
+      }
+    } catch {
+      // If validation fails, allow through
+    }
+    setIsValidating(false);
 
     const alphaWad = parseEther((Number(alpha) / 100).toString());
     const flatReward = parseEther(r);
@@ -255,14 +280,30 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
         )}
       </div>
 
+      {/* Validation Error */}
+      {validationError && (
+        <div className="flex items-start gap-2.5 p-3.5 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+          <AlertTriangle className="size-4 mt-0.5 shrink-0" />
+          <div>
+            <p className="font-medium mb-0.5">Question not suitable</p>
+            <p className="text-destructive/80 text-xs">{validationError}</p>
+          </div>
+        </div>
+      )}
+
       {/* Submit */}
       <Button
         type="submit"
         className="w-full cursor-pointer transition-shadow hover:shadow-[0_0_16px_var(--color-glow-primary)]"
         size="lg"
-        disabled={isPending || isConfirming || !question.trim()}
+        disabled={isPending || isConfirming || isValidating || !question.trim()}
       >
-        {isPending || isConfirming ? (
+        {isValidating ? (
+          <>
+            <Loader2 className="size-4 animate-spin" />
+            Validating question...
+          </>
+        ) : isPending || isConfirming ? (
           <>
             <Loader2 className="size-4 animate-spin" />
             {isPending ? "Sending Transaction..." : "Confirming..."}

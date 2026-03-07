@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
+import OpenAI from "openai";
 import { AGENT_PROFILES } from "./profiles.js";
-import { AGENT_KEYS } from "./config.js";
+import { AGENT_KEYS, OPENAI_API_KEY } from "./config.js";
 import { ethers } from "ethers";
 
 let _marketClient = null;
@@ -194,6 +195,50 @@ export function startApiServer(port = 8000) {
       res.json({ rankings: valid });
     } catch (e) {
       res.status(500).json({ detail: e.message });
+    }
+  });
+
+  app.post("/api/validate-question", async (req, res) => {
+    const { question } = req.body;
+    if (!question || question.trim().length < 10) {
+      return res.json({ valid: false, reason: "Question is too short. Please provide a more detailed question." });
+    }
+
+    try {
+      const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
+      const response = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: `You are a question validator for a self-resolving prediction market (based on the paper "Self-Resolving Prediction Markets for Unverifiable Outcomes" by Yiling Chen et al.).
+
+This market is designed for questions that are either:
+1. UNVERIFIABLE — No oracle, API, or data source can definitively determine the true answer. These are subjective, philosophical, or opinion-based questions.
+2. LONG-HORIZON — The outcome is so far in the future (years/decades) that no current oracle can resolve it, and locking capital until resolution is impractical.
+
+REJECT questions that are:
+- Short-term verifiable facts (e.g., "Will ETH hit $5000 tomorrow?" — a price oracle can verify this)
+- Already known or easily googleable (e.g., "Is the Earth round?")
+- Binary sports/election results with near-term resolution dates and available oracles
+
+Respond in JSON: {"valid": true/false, "reason": "brief explanation in English"}`
+          },
+          {
+            role: "user",
+            content: `Is this question suitable for a self-resolving prediction market?\n\nQuestion: "${question.trim()}"`
+          }
+        ],
+        response_format: { type: "json_object" },
+        temperature: 0.3,
+      });
+
+      const result = JSON.parse(response.choices[0].message.content);
+      res.json({ valid: !!result.valid, reason: result.reason || "" });
+    } catch (e) {
+      // On LLM failure, allow the question (don't block users)
+      console.error(`[Validate] LLM error: ${e.message}`);
+      res.json({ valid: true, reason: "Validation unavailable, proceeding." });
     }
   });
 
