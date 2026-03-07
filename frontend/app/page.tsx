@@ -14,20 +14,20 @@ const TextType = dynamic(() => import("@/components/TextType"), {
 
 export default function LandingPage() {
   return (
-    <div className="relative w-full h-dvh overflow-hidden bg-[#08090d]">
+    <div className="relative w-full h-dvh overflow-hidden bg-[#0c0a09]">
       {/* LightPillar Background */}
       <div className="absolute inset-0">
         <LightPillar
-          topColor="#5227FF"
-          bottomColor="#FF9FFC"
-          intensity={0.8}
-          rotationSpeed={0.5}
+          topColor="#e07c3f"
+          bottomColor="#d4692a"
+          intensity={0.6}
+          rotationSpeed={0.4}
           interactive={false}
-          glowAmount={0.004}
-          pillarWidth={10}
+          glowAmount={0.005}
+          pillarWidth={12}
           pillarHeight={1}
-          noiseIntensity={2}
-          pillarRotation={30}
+          noiseIntensity={1.8}
+          pillarRotation={25}
           quality="medium"
         />
       </div>
@@ -37,7 +37,7 @@ export default function LandingPage() {
         className="absolute inset-0 z-[5] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)",
+            "radial-gradient(ellipse at center, rgba(12,10,9,0.7) 0%, rgba(12,10,9,0.35) 60%, transparent 100%)",
         }}
       />
 
@@ -62,7 +62,7 @@ export default function LandingPage() {
         {/* Badge */}
         <div className="mb-6 animate-fadeUp">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-mono tracking-wider uppercase">
-            <span className="size-1.5 rounded-full bg-emerald-400 animate-livePulse" />
+            <span className="size-1.5 rounded-full bg-[#e07c3f] animate-livePulse" />
             Live on Base Sepolia
           </span>
         </div>
@@ -91,7 +91,7 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 animate-fadeUp stagger-3">
           <Link
             href="/markets"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:border-white/30 hover:shadow-[0_0_30px_rgba(82,39,255,0.3)] cursor-pointer"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#e07c3f] text-white text-sm font-medium transition-all duration-300 hover:bg-[#c96a30] hover:shadow-[0_0_30px_rgba(224,124,63,0.35)] cursor-pointer"
           >
             Enter Markets
             <ArrowRight className="size-4" />

@@ -7,31 +7,22 @@ import { BarChart3 } from "lucide-react";
 function SkeletonCard({ index }: { index: number }) {
   return (
     <div
-      className="bg-card border border-border rounded-xl p-5 animate-pulse"
-      style={{ animationDelay: `${index * 0.08}s` }}
+      className="bg-card/60 border border-border/40 rounded-2xl p-5 animate-pulse"
+      style={{ animationDelay: `${index * 0.06}s` }}
     >
-      {/* Header row */}
-      <div className="flex justify-between mb-4">
-        <div className="h-6 w-12 bg-secondary rounded-md" />
-        <div className="flex items-center gap-1.5">
-          <div className="size-2 bg-secondary rounded-full" />
-          <div className="h-4 w-10 bg-secondary rounded-md" />
-        </div>
+      <div className="flex justify-between mb-3.5">
+        <div className="h-3.5 w-12 bg-secondary rounded" />
+        <div className="h-3.5 w-10 bg-secondary rounded" />
       </div>
-      {/* Question lines */}
-      <div className="space-y-2 mb-6">
-        <div className="h-4 w-full bg-secondary rounded-md" />
-        <div className="h-4 w-3/4 bg-secondary rounded-md" />
+      <div className="space-y-2 mb-5">
+        <div className="h-3.5 w-full bg-secondary rounded" />
+        <div className="h-3.5 w-2/3 bg-secondary rounded" />
       </div>
-      {/* Probability */}
-      <div className="mb-4">
-        <div className="h-10 w-20 bg-secondary rounded-md mb-3" />
-        <div className="h-1.5 w-full bg-secondary rounded-full" />
-      </div>
-      {/* Footer */}
-      <div className="flex justify-between pt-4 border-t border-border/60">
-        <div className="h-4 w-24 bg-secondary rounded-md" />
-        <div className="h-4 w-20 bg-secondary rounded-md" />
+      <div className="h-7 w-14 bg-secondary rounded mb-4" />
+      <div className="h-1 w-full bg-secondary rounded-full mb-4" />
+      <div className="flex justify-between">
+        <div className="h-3 w-12 bg-secondary rounded" />
+        <div className="h-3 w-16 bg-secondary rounded" />
       </div>
     </div>
   );
@@ -45,8 +36,8 @@ interface MarketGridProps {
 export function MarketGrid({ markets, isLoading }: MarketGridProps) {
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        {Array.from({ length: 6 }).map((_, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {Array.from({ length: 8 }).map((_, i) => (
           <SkeletonCard key={i} index={i} />
         ))}
       </div>
@@ -55,22 +46,22 @@ export function MarketGrid({ markets, isLoading }: MarketGridProps) {
 
   if (markets.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-24 animate-fadeUp">
-        <div className="size-16 rounded-2xl bg-secondary flex items-center justify-center mb-5">
-          <BarChart3 className="size-7 text-muted-foreground" />
+      <div className="flex flex-col items-center justify-center py-20 animate-fadeUp">
+        <div className="size-11 rounded-xl bg-secondary/40 flex items-center justify-center mb-3">
+          <BarChart3 className="size-5 text-muted-foreground/40" />
         </div>
-        <div className="text-foreground text-lg font-semibold mb-1.5">
+        <div className="text-foreground text-sm font-medium mb-0.5">
           No markets found
         </div>
-        <p className="text-muted-foreground text-sm text-center max-w-xs">
-          Create the first prediction market to get started, or switch filters to see other markets.
+        <p className="text-muted-foreground/60 text-xs text-center">
+          Try a different filter or create a new market.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {markets.map((market, i) => (
         <MarketCard key={market.id} market={market} index={i} />
       ))}

@@ -13,71 +13,71 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #3b82f6;
+  --primary: #e07c3f;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
+  --secondary: #f5f0eb;
   --secondary-foreground: #0f172a;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #10b981;
+  --muted: #f5f0eb;
+  --muted-foreground: #7a6e63;
+  --accent: #e07c3f;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #3b82f6;
-  --chart-1: #10b981;
-  --chart-2: #3b82f6;
+  --border: #e8ddd3;
+  --input: #e8ddd3;
+  --ring: #e07c3f;
+  --chart-1: #e07c3f;
+  --chart-2: #d4915a;
   --chart-3: #a855f7;
   --chart-4: #f59e0b;
   --chart-5: #ec4899;
-  --radius: 0.5rem;
+  --radius: 0.625rem;
   --scrollbar-thumb: #c1c5cd;
   --sidebar: #f8fafc;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #3b82f6;
+  --sidebar-primary: #e07c3f;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f1f5f9;
+  --sidebar-accent: #f5f0eb;
   --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #3b82f6;
+  --sidebar-border: #e8ddd3;
+  --sidebar-ring: #e07c3f;
 }
 
 /* ─── Dark Mode (Primary Focus) ─── */
 .dark {
-  --background: #08090d;
-  --foreground: #e4e8ef;
-  --card: #111318;
-  --card-foreground: #e4e8ef;
-  --popover: #111318;
-  --popover-foreground: #e4e8ef;
-  --primary: #3b82f6;
-  --primary-foreground: #e4e8ef;
-  --secondary: #191b22;
-  --secondary-foreground: #e4e8ef;
-  --muted: #191b22;
-  --muted-foreground: #6b7280;
-  --accent: #10b981;
+  --background: #0c0a09;
+  --foreground: #e7e5e4;
+  --card: #171412;
+  --card-foreground: #e7e5e4;
+  --popover: #171412;
+  --popover-foreground: #e7e5e4;
+  --primary: #e07c3f;
+  --primary-foreground: #fef7f0;
+  --secondary: #1c1917;
+  --secondary-foreground: #e7e5e4;
+  --muted: #1c1917;
+  --muted-foreground: #a8a29e;
+  --accent: #e07c3f;
   --accent-foreground: #e4e8ef;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #1f2231;
-  --input: #1f2231;
-  --ring: #3b82f6;
-  --chart-1: #10b981;
-  --chart-2: #3b82f6;
+  --border: #292524;
+  --input: #292524;
+  --ring: #e07c3f;
+  --chart-1: #e07c3f;
+  --chart-2: #d4915a;
   --chart-3: #a855f7;
   --chart-4: #f59e0b;
   --chart-5: #ec4899;
-  --scrollbar-thumb: #2a2d3a;
-  --sidebar: #111318;
-  --sidebar-foreground: #e4e8ef;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #e4e8ef;
-  --sidebar-accent: #191b22;
-  --sidebar-accent-foreground: #e4e8ef;
-  --sidebar-border: #1f2231;
-  --sidebar-ring: #3b82f6;
+  --scrollbar-thumb: #44403c;
+  --sidebar: #171412;
+  --sidebar-foreground: #e7e5e4;
+  --sidebar-primary: #e07c3f;
+  --sidebar-primary-foreground: #fef7f0;
+  --sidebar-accent: #1c1917;
+  --sidebar-accent-foreground: #e7e5e4;
+  --sidebar-border: #292524;
+  --sidebar-ring: #e07c3f;
 }
 
 @theme inline {
@@ -136,24 +136,24 @@
   --color-surface3: var(--muted);
   --color-glass-border: var(--border);
   --color-glass-border-bright: var(--border);
-  --color-cyan: #3b82f6;
-  --color-cyan-dim: rgba(59, 130, 246, 0.08);
-  --color-cyan-glow: rgba(59, 130, 246, 0.15);
-  --color-cyan-bright: #60a5fa;
-  --color-green: #10b981;
-  --color-green-dim: rgba(16, 185, 129, 0.1);
+  --color-cyan: #e07c3f;
+  --color-cyan-dim: rgba(224, 124, 63, 0.08);
+  --color-cyan-glow: rgba(224, 124, 63, 0.15);
+  --color-cyan-bright: #f0965a;
+  --color-green: #e07c3f;
+  --color-green-dim: rgba(224, 124, 63, 0.1);
   --color-red: #ef4444;
   --color-red-dim: rgba(239, 68, 68, 0.1);
   --color-yellow: #f59e0b;
   --color-text: var(--muted-foreground);
   --color-text-bright: var(--foreground);
   --color-text-dim: var(--muted-foreground);
-  --color-primary-light: rgba(59, 130, 246, 0.08);
-  --color-primary-border: rgba(59, 130, 246, 0.2);
+  --color-primary-light: rgba(224, 124, 63, 0.08);
+  --color-primary-border: rgba(224, 124, 63, 0.2);
 
   /* Glow tokens for dark mode effects */
-  --color-glow-primary: rgba(59, 130, 246, 0.12);
-  --color-glow-accent: rgba(16, 185, 129, 0.12);
+  --color-glow-primary: rgba(224, 124, 63, 0.12);
+  --color-glow-accent: rgba(224, 124, 63, 0.12);
   --color-glow-destructive: rgba(239, 68, 68, 0.12);
 }
 
@@ -259,6 +259,15 @@ html.transitioning *::after {
 /* ─── Utility: tabular numbers for data ─── */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* ─── Utility: hide scrollbar ─── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* ─── Mobile: min touch targets ─── */

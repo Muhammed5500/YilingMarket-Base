@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { WalletConnect } from "./WalletConnect";
-import { Fuel, Zap, BookOpen, ExternalLink } from "lucide-react";
+import { BookOpen, ExternalLink, Plus } from "lucide-react";
 
 interface HeaderProps {
   gasPrice: string;
@@ -17,81 +16,56 @@ interface HeaderProps {
 
 export function Header({ gasPrice, isConnected, isConnecting, onCreateMarket }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-20 border-b border-border/60 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 safe-top">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between gap-4">
-          {/* Logo */}
-          <Link
-            href="/markets"
-            className="flex items-center gap-2.5 transition-opacity hover:opacity-80 cursor-pointer"
-          >
-            <Image
-              src="/favicon-5-dice.svg"
-              alt="Yiling Protocol"
-              width={28}
-              height={28}
-              className="rounded-md"
-            />
-            <span className="text-lg font-bold text-foreground tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              Yiling Protocol
-            </span>
-          </Link>
-
-          {/* Center: Navigation + Status (desktop) */}
-          <div className="hidden md:flex items-center gap-2">
-            <a
-              href="https://yiling-protocol-landing.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5 mr-1"
-            >
-              Protocol
-              <ExternalLink className="size-3" />
-            </a>
+    <header className="sticky top-0 z-20 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 safe-top">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Left: Logo + Nav */}
+          <div className="flex items-center gap-8">
             <Link
-              href="/docs"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5 mr-1"
+              href="/markets"
+              className="flex items-center gap-2.5 transition-opacity hover:opacity-80 cursor-pointer"
             >
-              <BookOpen className="size-3.5" />
-              Docs
+              <Image
+                src="/favicon-5-dice.svg"
+                alt="Yiling Protocol"
+                width={28}
+                height={28}
+                className="rounded-lg"
+              />
+              <span className="text-base font-semibold text-foreground tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+                yiling protocol
+              </span>
             </Link>
-            <Badge
-              variant="secondary"
-              className="font-mono text-xs px-3 py-1.5 tabular-nums gap-1.5"
-            >
-              <Fuel className="size-3 text-muted-foreground" />
-              {gasPrice !== "--" ? gasPrice : "—"}
-            </Badge>
-            <Badge variant="secondary" className="text-xs px-3 py-1.5 gap-1.5">
-              <Zap className="size-3 text-muted-foreground" />
-              Base
-            </Badge>
-            <div
-              className={`size-2 rounded-full transition-colors ${
-                isConnected
-                  ? "bg-accent animate-livePulse"
-                  : isConnecting
-                  ? "bg-yellow-500 animate-pulse"
-                  : "bg-muted-foreground/50"
-              }`}
-              title={
-                isConnected
-                  ? "Connected"
-                  : isConnecting
-                  ? "Connecting..."
-                  : "Disconnected"
-              }
-            />
+
+            <nav className="hidden md:flex items-center gap-6">
+              <a
+                href="https://yiling-protocol-landing.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+              >
+                Protocol
+                <ExternalLink className="size-2.5 opacity-40" />
+              </a>
+              <Link
+                href="/docs"
+                className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Docs
+              </Link>
+            </nav>
           </div>
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-2 md:gap-2.5">
+          <div className="flex items-center gap-3">
             <ThemeToggle />
             {onCreateMarket && (
               <Button
-                className="bg-primary text-primary-foreground transition-shadow hover:shadow-[0_0_16px_var(--color-glow-primary)] cursor-pointer"
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer gap-1.5 rounded-lg"
                 onClick={onCreateMarket}
               >
+                <Plus className="size-3.5" />
                 <span className="hidden sm:inline">Create Market</span>
                 <span className="sm:hidden">Create</span>
               </Button>
@@ -99,50 +73,10 @@ export function Header({ gasPrice, isConnected, isConnecting, onCreateMarket }: 
             <WalletConnect />
           </div>
         </div>
-
-        {/* Mobile: Network Status */}
-        <div className="flex md:hidden items-center gap-2 mt-2.5 pb-0.5">
-          <a
-            href="https://yiling-protocol-landing.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Badge variant="secondary" className="text-xs px-2.5 py-1 gap-1.5 cursor-pointer hover:bg-secondary/80 transition-colors">
-              Protocol
-              <ExternalLink className="size-3" />
-            </Badge>
-          </a>
-          <Link
-            href="/docs"
-            className="inline-flex items-center gap-1"
-          >
-            <Badge variant="secondary" className="text-xs px-2.5 py-1 gap-1.5 cursor-pointer hover:bg-secondary/80 transition-colors">
-              <BookOpen className="size-3 text-muted-foreground" />
-              Docs
-            </Badge>
-          </Link>
-          <Badge
-            variant="secondary"
-            className="font-mono text-xs px-2.5 py-1 tabular-nums gap-1.5"
-          >
-            <Fuel className="size-3 text-muted-foreground" />
-            {gasPrice !== "--" ? gasPrice : "—"}
-          </Badge>
-          <Badge variant="secondary" className="text-xs px-2.5 py-1 gap-1.5">
-            <Zap className="size-3 text-muted-foreground" />
-            Base
-          </Badge>
-          <div
-            className={`size-2 rounded-full ${
-              isConnected
-                ? "bg-accent animate-livePulse"
-                : isConnecting
-                ? "bg-yellow-500 animate-pulse"
-                : "bg-muted-foreground/50"
-            }`}
-          />
-        </div>
       </div>
+
+      {/* Subtle bottom border */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
     </header>
   );
 }

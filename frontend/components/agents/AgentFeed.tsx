@@ -19,7 +19,7 @@ const AGENT_COLORS: Record<string, string> = {
   analyst: "#00d4b4",
   contrarian: "#ff6040",
   bayesian: "#a855f7",
-  sentiment: "#3b82f6",
+  sentiment: "#e07c3f",
   historian: "#f59e0b",
   futurist: "#ec4899",
   skeptic: "#ef4444",
@@ -34,9 +34,9 @@ const AGENT_COLORS: Record<string, string> = {
 };
 
 function getAgentColor(name?: string): string {
-  if (!name) return "#3b82f6";
+  if (!name) return "#e07c3f";
   const key = name.toLowerCase().replace(/\s+/g, "");
-  return AGENT_COLORS[key] || "#3b82f6";
+  return AGENT_COLORS[key] || "#e07c3f";
 }
 
 export function AgentFeed({ feed }: { feed: FeedEntry[] }) {
