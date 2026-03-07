@@ -159,6 +159,44 @@ export function startApiServer(port = 8000) {
     }
   });
 
+  app.get("/api/markets/:id/leaderboard", async (req, res) => {
+    if (!_marketClient) return res.json({ rankings: [] });
+    const marketId = parseInt(req.params.id);
+    try {
+      const info = await _marketClient.getMarketInfo(marketId);
+      if (!info.resolved) return res.json({ rankings: [] });
+
+      const nameMap = getAgentNameMap();
+      const predictions = await _marketClient.getPredictions(marketId);
+      const params = await _marketClient.getMarketParams(marketId);
+      const bondAmt = Number(params.bondAmount) / 1e18;
+
+      const rankings = await Promise.all(predictions.map(async (p, i) => {
+        const addr = p.predictor.toLowerCase();
+        try {
+          const payout = await _marketClient.getPayout(marketId, p.predictor);
+          const net = Number(payout) / 1e18 - bondAmt;
+          return {
+            rank: 0,
+            agent: nameMap[addr] || `${p.predictor.slice(0, 6)}...${p.predictor.slice(-4)}`,
+            address: p.predictor,
+            total_eth: Math.round(net * 1e6) / 1e6,
+            probability: Number(p.probability) / 1e18,
+          };
+        } catch {
+          return null;
+        }
+      }));
+
+      const valid = rankings.filter(Boolean).sort((a, b) => b.total_eth - a.total_eth);
+      valid.forEach((r, i) => r.rank = i + 1);
+
+      res.json({ rankings: valid });
+    } catch (e) {
+      res.status(500).json({ detail: e.message });
+    }
+  });
+
   app.get("/api/agent-names", (req, res) => {
     res.json(getAgentNameMap());
   });
