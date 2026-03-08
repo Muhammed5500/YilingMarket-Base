@@ -33,7 +33,7 @@ export function Header({ gasPrice, isConnected, isConnecting, onCreateMarket }: 
                 className="rounded-lg"
               />
               <span className="text-base font-semibold text-foreground tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-                yiling protocol
+                Yiling Market
               </span>
             </Link>
 

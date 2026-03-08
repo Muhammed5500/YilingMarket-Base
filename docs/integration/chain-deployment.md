@@ -1,6 +1,6 @@
 # Chain-Agnostic Deployment
 
-Yiling Protocol is chain-agnostic. The smart contracts are standard Solidity 0.8.24 with no chain-specific dependencies — deploy on any EVM-compatible chain.
+Yiling Market is chain-agnostic. The smart contracts are standard Solidity 0.8.24 with no chain-specific dependencies — deploy on any EVM-compatible chain.
 
 ## Deployment Checklist
 

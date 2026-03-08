@@ -1,5 +1,5 @@
 """
-Yiling Protocol - REST API Server
+Yiling Market - REST API Server
 Provides endpoints for external agent registration and market data queries.
 
 Run standalone:  uvicorn api_server:app --host 0.0.0.0 --port 8000
@@ -18,7 +18,7 @@ from agent_registry import AgentRegistry
 # ─── App & Registry ───────────────────────────────────────────────────────────
 
 app = FastAPI(
-    title="Yiling Protocol API",
+    title="Yiling Market API",
     description="Oracle-Free Self-Resolving Prediction Market — Agent SDK API",
     version="1.0.0",
 )

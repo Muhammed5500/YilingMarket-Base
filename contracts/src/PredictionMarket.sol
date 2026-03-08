@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 import "./libraries/FixedPointMath.sol";
 
-/// @title Yiling Protocol - PredictionMarket
+/// @title Yiling Market - PredictionMarket
 /// @notice Oracle-free self-resolving prediction market using SKC (Srinivasan-Karger-Chen) mechanism
 /// @dev Bond-based adaptation of the SKC mechanism:
 ///      - Agents post a bond (deposit) when predicting

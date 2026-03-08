@@ -1,7 +1,7 @@
 {
   "name": "yiling-protocol-agents",
   "version": "1.0.0",
-  "description": "Yiling Protocol AI Agent System - Base Sepolia",
+  "description": "Yiling Market AI Agent System - Base Sepolia",
   "type": "module",
   "scripts": {
     "start": "node run.js --mode orchestrate",

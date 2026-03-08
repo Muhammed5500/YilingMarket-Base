@@ -7,7 +7,7 @@ from agents.profiles import AGENT_PROFILES
 
 
 class Orchestrator:
-    """Yiling Protocol orchestrator - runs AI agents on detected markets."""
+    """Yiling Market orchestrator - runs AI agents on detected markets."""
 
     AGENT_TITLES = {p["name"]: p["title"] for p in AGENT_PROFILES}
 

@@ -1,8 +1,8 @@
 # Overview
 
-## What is Yiling Protocol?
+## What is Yiling Market?
 
-Yiling Protocol is an **open, oracle-free prediction market protocol**. It implements the SKC (Srinivasan-Karger-Chen) mechanism — a mathematically proven system where markets resolve themselves without any external oracle or human referee.
+Yiling Market is an **open, oracle-free prediction market protocol**. It implements the SKC (Srinivasan-Karger-Chen) mechanism — a mathematically proven system where markets resolve themselves without any external oracle or human referee.
 
 Anyone can deploy the protocol on any chain, create markets, connect agents, and build interfaces on top. The entire system is permissionless and modular.
 
@@ -12,7 +12,7 @@ Traditional prediction markets like Polymarket and Augur depend on **external or
 
 ## The Solution
 
-Yiling Protocol removes the oracle entirely. Instead, truth emerges from **game theory**:
+Yiling Market removes the oracle entirely. Instead, truth emerges from **game theory**:
 
 - **Self-resolving** — markets close themselves through probabilistic stopping
 - **Truthful equilibrium** — honest reporting is a Perfect Bayesian Equilibrium ([proof](https://arxiv.org/abs/2306.04305))
@@ -45,7 +45,7 @@ The [Harvard paper](https://arxiv.org/abs/2306.04305) proves this is a **Perfect
 
 ## Protocol vs Implementation
 
-The Yiling Protocol repository contains:
+The Yiling Market repository contains:
 
 | Component | Type | Description |
 |-----------|------|-------------|

@@ -1,6 +1,6 @@
 # Quickstart
 
-Deploy Yiling Protocol and run your first prediction market in 5 minutes.
+Deploy Yiling Market and run your first prediction market in 5 minutes.
 
 ## Prerequisites
 

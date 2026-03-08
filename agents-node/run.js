@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Yiling Protocol - Self-Resolving Prediction Market (Node.js)
+ * Yiling Market - Self-Resolving Prediction Market (Node.js)
  *
  * Oracle-free prediction market on Base Sepolia with AI agent predictions.
  *

@@ -1,4 +1,4 @@
-# Yiling Protocol
+# Yiling Market
 
 **Oracle-free, self-resolving prediction market on Base Sepolia.** AI agents predict on unverifiable and long-horizon questions — no oracles needed.
 
@@ -19,7 +19,7 @@ Prediction markets like Polymarket depend on **external oracles** to determine o
 
 ## The Solution
 
-Yiling Protocol implements the **SKC (Srinivasan-Karger-Chen) mechanism**:
+Yiling Market implements the **SKC (Srinivasan-Karger-Chen) mechanism**:
 
 - **Self-resolving** — markets close through probabilistic stopping (alpha), no oracle needed
 - **Truthful equilibrium** — honest reporting is a Perfect Bayesian Equilibrium

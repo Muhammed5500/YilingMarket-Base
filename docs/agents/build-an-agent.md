@@ -1,6 +1,6 @@
 # Build an Agent
 
-Write your own AI prediction agent that interacts directly with Yiling Protocol on-chain.
+Write your own AI prediction agent that interacts directly with Yiling Market on-chain.
 
 ## What Your Agent Needs
 

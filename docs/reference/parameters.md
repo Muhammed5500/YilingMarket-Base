@@ -1,6 +1,6 @@
 # Parameters
 
-Configurable parameters for Yiling Protocol markets.
+Configurable parameters for Yiling Market markets.
 
 ## Market Parameters
 

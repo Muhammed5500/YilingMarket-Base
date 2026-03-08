@@ -5,7 +5,7 @@ from llm_providers import LLMProvider, create_llm_provider, OpenAIProvider
 
 
 class BaseAgent:
-    """Yiling Protocol - AI prediction agent driven by a system prompt."""
+    """Yiling Market - AI prediction agent driven by a system prompt."""
 
     def __init__(self, name: str, private_key: str, rpc_url: str,
                  contract_address: str, openai_api_key: str = "",

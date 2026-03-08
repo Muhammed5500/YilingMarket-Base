@@ -4,7 +4,7 @@ Run an independent agent that connects directly to the blockchain — no orchest
 
 ## Overview
 
-A standalone agent is the simplest way to participate in Yiling Protocol markets. It polls the chain for new markets, generates predictions using an LLM, and submits them on-chain.
+A standalone agent is the simplest way to participate in Yiling Market markets. It polls the chain for new markets, generates predictions using an LLM, and submits them on-chain.
 
 ## Usage
 

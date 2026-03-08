@@ -1,5 +1,5 @@
 """
-Yiling Protocol — Chain Watcher
+Yiling Market — Chain Watcher
 
 Polling-based blockchain watcher that monitors on-chain prediction market events
 and broadcasts them to the frontend dashboard via EventBroadcaster.

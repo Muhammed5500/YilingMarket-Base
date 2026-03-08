@@ -6,7 +6,7 @@ WAD = 10**18
 
 
 class MarketClient:
-    """Yiling Protocol - Web3 client for interacting with the PredictionMarket contract."""
+    """Yiling Market - Web3 client for interacting with the PredictionMarket contract."""
 
     def __init__(self, rpc_url: str, contract_address: str, private_key: str):
         self.w3 = Web3(Web3.HTTPProvider(rpc_url, request_kwargs={"timeout": 60}))

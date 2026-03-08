@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Yiling Protocol — Custom Agent Template
+Yiling Market — Custom Agent Template
 
 A self-contained agent that watches for new prediction markets on-chain
 and submits predictions. Copy this file and modify decide_probability()
@@ -230,7 +230,7 @@ class CustomAgent:
     def run(self):
         """Main loop: poll for new markets and predict on them."""
         print("=" * 50)
-        print("  Yiling Protocol — Custom Agent")
+        print("  Yiling Market — Custom Agent")
         print(f"  Address: {self.address}")
         print(f"  Contract: {CONTRACT_ADDRESS}")
         print(f"  RPC: {RPC_URL}")

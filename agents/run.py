@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Yiling Protocol - Self-Resolving Prediction Market
+Yiling Market - Self-Resolving Prediction Market
 
 Oracle-free prediction market on Base with AI agent predictions.
 Users create markets via the frontend (wallet connect).
@@ -218,7 +218,7 @@ def print_orchestrate_banner(args, prediction_agents, protocol_config):
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="Yiling Protocol - Self-Resolving Prediction Market")
+    parser = argparse.ArgumentParser(description="Yiling Market - Self-Resolving Prediction Market")
     parser.add_argument("--mode", choices=["watch", "orchestrate"], default="watch",
                         help="Run mode: 'watch' (read-only dashboard) or 'orchestrate' (agents + webhooks)")
     parser.add_argument("--delay", type=float, default=DELAY_BETWEEN_PREDICTIONS,

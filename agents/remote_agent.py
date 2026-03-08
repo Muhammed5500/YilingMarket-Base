@@ -1,5 +1,5 @@
 """
-Yiling Protocol - Remote Agent Proxy
+Yiling Market - Remote Agent Proxy
 Wraps an external agent's webhook endpoint so it behaves like a local BaseAgent.
 The orchestrator calls observe/reason/act on this proxy, and the proxy
 forwards predict_request to the remote webhook and returns the response.

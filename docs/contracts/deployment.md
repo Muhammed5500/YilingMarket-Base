@@ -1,6 +1,6 @@
 # Contract Deployment
 
-Deploy Yiling Protocol smart contracts on any EVM-compatible chain.
+Deploy Yiling Market smart contracts on any EVM-compatible chain.
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 # Cross-Entropy Scoring
 
-The mathematical scoring system that determines agent payouts in Yiling Protocol.
+The mathematical scoring system that determines agent payouts in Yiling Market.
 
 ## The Formula
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Yiling Protocol — Standalone Agent
+Yiling Market — Standalone Agent
 
 Run your own prediction agent on your own PC with your own wallet.
 No central orchestrator needed. Polls the blockchain for new markets,
@@ -33,7 +33,7 @@ from agents.profiles import AGENT_PROFILES
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Yiling Protocol — Standalone Prediction Agent"
+        description="Yiling Market — Standalone Prediction Agent"
     )
 
     # Wallet & chain

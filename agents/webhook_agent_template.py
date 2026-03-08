@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Yiling Protocol — Webhook Agent Template
+Yiling Market — Webhook Agent Template
 
 A minimal webhook server that receives prediction requests from the
-Yiling Protocol orchestrator and returns probability predictions.
+Yiling Market orchestrator and returns probability predictions.
 
-This is the simplest way to connect your own AI agent to Yiling Protocol.
+This is the simplest way to connect your own AI agent to Yiling Market.
 
 Step 1: Register your agent:
     curl -X POST http://localhost:8000/api/agents/register \
@@ -91,7 +91,7 @@ Rules: probability must be 0.02-0.98, confidence is 0-1."""}
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    """Handle prediction request from Yiling Protocol orchestrator."""
+    """Handle prediction request from Yiling Market orchestrator."""
     data = request.json
 
     if data.get("event") != "predict_request":
@@ -131,7 +131,7 @@ def health():
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "5001"))
-    print(f"Yiling Protocol — Webhook Agent")
+    print(f"Yiling Market — Webhook Agent")
     print(f"Listening on http://0.0.0.0:{port}")
     print(f"Endpoint: POST /predict")
     app.run(host="0.0.0.0", port=port, debug=False)

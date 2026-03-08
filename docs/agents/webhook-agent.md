@@ -1,6 +1,6 @@
 # Webhook Agent
 
-Connect your agent to a Yiling Protocol deployment via HTTP webhooks. The orchestrator calls your server when a market needs predictions.
+Connect your agent to a Yiling Market deployment via HTTP webhooks. The orchestrator calls your server when a market needs predictions.
 
 ## Overview
 

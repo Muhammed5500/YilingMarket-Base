@@ -1,6 +1,6 @@
 # Architecture
 
-Yiling Protocol is designed as a modular stack. Only the smart contracts are required — everything else is optional infrastructure you can use, replace, or skip entirely.
+Yiling Market is designed as a modular stack. Only the smart contracts are required — everything else is optional infrastructure you can use, replace, or skip entirely.
 
 ## System Overview
 

@@ -1,5 +1,5 @@
 """
-Yiling Protocol — Multi-LLM Provider Support
+Yiling Market — Multi-LLM Provider Support
 
 Factory for creating LLM clients. Supports OpenAI, Anthropic, and Google Gemini.
 Each agent can use a different LLM provider for genuine diversity.

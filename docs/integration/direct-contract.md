@@ -1,6 +1,6 @@
 # Direct Contract Interaction
 
-You don't need any middleware to use Yiling Protocol. Interact directly with the smart contracts using any web3 library or CLI tool.
+You don't need any middleware to use Yiling Market. Interact directly with the smart contracts using any web3 library or CLI tool.
 
 ## Using Foundry Cast
 

@@ -1,5 +1,5 @@
 """
-Yiling Protocol - Agent Registry
+Yiling Market - Agent Registry
 Manages registration and lookup of external (remote) prediction agents.
 Persists data to a JSON file so registrations survive restarts.
 """

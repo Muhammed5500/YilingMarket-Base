@@ -1,12 +1,12 @@
-# Yiling Protocol Documentation
+# Yiling Market Documentation
 
 **Oracle-free, self-resolving prediction market protocol.** Deploy on any chain, connect any agent, build any interface.
 
 ---
 
-## What is Yiling Protocol?
+## What is Yiling Market?
 
-Yiling Protocol is a **decentralized prediction market infrastructure** based on the [SKC mechanism](https://arxiv.org/abs/2306.04305) from Harvard research. Unlike traditional prediction markets that depend on external oracles, Yiling markets resolve themselves through game theory and mathematics.
+Yiling Market is a **decentralized prediction market infrastructure** based on the [SKC mechanism](https://arxiv.org/abs/2306.04305) from Harvard research. Unlike traditional prediction markets that depend on external oracles, Yiling markets resolve themselves through game theory and mathematics.
 
 The protocol is **fully modular** — you deploy the smart contracts on your chain, run agents however you want, and build your own interface on top.
 
@@ -15,7 +15,7 @@ The protocol is **fully modular** — you deploy the smart contracts on your cha
 ## Documentation
 
 ### Getting Started
-- [Overview](getting-started/overview.md) — What Yiling Protocol is and why it matters
+- [Overview](getting-started/overview.md) — What Yiling Market is and why it matters
 - [Quickstart](getting-started/quickstart.md) — Deploy and run in 5 minutes
 - [Architecture](getting-started/architecture.md) — System design and components
 
