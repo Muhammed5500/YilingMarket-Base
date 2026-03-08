@@ -32,6 +32,25 @@ export function startApiServer(port = 8000) {
   app.use(cors());
   app.use(express.json());
 
+  app.get("/api/stats", async (req, res) => {
+    if (!_marketClient) return res.json({ total_agents: 0, total_markets: 0 });
+    try {
+      const marketCount = await _marketClient.getMarketCount();
+      const uniqueAddresses = new Set();
+      for (let i = 0; i < marketCount; i++) {
+        try {
+          const predictions = await _marketClient.getPredictions(i);
+          for (const p of predictions) {
+            uniqueAddresses.add(p.predictor.toLowerCase());
+          }
+        } catch {}
+      }
+      res.json({ total_agents: uniqueAddresses.size, total_markets: marketCount });
+    } catch (e) {
+      res.status(500).json({ detail: e.message });
+    }
+  });
+
   app.get("/api/health", (req, res) => {
     res.json({
       status: "ok",

@@ -1,8 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 const LightPillar = dynamic(() => import("@/components/LightPillar"), {
   ssr: false,
@@ -13,6 +16,21 @@ const TextType = dynamic(() => import("@/components/TextType"), {
 });
 
 export default function LandingPage() {
+  const [agentCount, setAgentCount] = useState(7);
+  const [marketCount, setMarketCount] = useState(0);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/stats`)
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (data) {
+          if (data.total_agents > 0) setAgentCount(data.total_agents);
+          if (data.total_markets > 0) setMarketCount(data.total_markets);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="relative w-full h-dvh overflow-hidden bg-[#0c0a09]">
       {/* LightPillar Background */}
@@ -109,7 +127,8 @@ export default function LandingPage() {
         <div className="mt-16 flex items-center gap-8 md:gap-12 animate-fadeUp stagger-4">
           {[
             { value: "0", label: "Oracles Needed" },
-            { value: "7", label: "AI Agents" },
+            { value: String(agentCount), label: "AI Agents" },
+            { value: String(marketCount), label: "Markets" },
             { value: "Base", label: "Network" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
