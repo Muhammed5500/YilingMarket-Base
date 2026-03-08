@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useAccount } from "wagmi";
 import { useMarketList } from "@/hooks/useMarketList";
 import { Header } from "@/components/layout/Header";
 import { MarketGrid } from "@/components/markets/MarketGrid";
@@ -9,17 +10,24 @@ import { TopAgents } from "@/components/markets/TopAgents";
 import { CreateMarketForm } from "@/components/market/CreateMarketForm";
 import { X } from "lucide-react";
 
-type Filter = "all" | "live" | "resolved";
+type Filter = "all" | "live" | "resolved" | "mine";
 
 export default function Home() {
   const { markets, isLoading, refetch } = useMarketList();
+  const { address } = useAccount();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [filter, setFilter] = useState<Filter>("all");
 
+  const myMarkets = useMemo(() => {
+    if (!address) return [];
+    return markets.filter((m) => m.creator.toLowerCase() === address.toLowerCase());
+  }, [markets, address]);
+
   const filtered = useMemo(() => {
     if (filter === "all") return markets;
+    if (filter === "mine") return myMarkets;
     return markets.filter((m) => m.status === filter);
-  }, [markets, filter]);
+  }, [markets, myMarkets, filter]);
 
   const liveCount = markets.filter((m) => m.status === "live").length;
   const resolvedCount = markets.filter((m) => m.status === "resolved").length;
@@ -69,6 +77,7 @@ export default function Home() {
                 { key: "all" as Filter, label: "All", count: markets.length },
                 { key: "live" as Filter, label: "Live", count: liveCount },
                 { key: "resolved" as Filter, label: "Resolved", count: resolvedCount },
+                ...(address ? [{ key: "mine" as Filter, label: "Mine", count: myMarkets.length }] : []),
               ]).map((tab) => (
                 <button
                   key={tab.key}
