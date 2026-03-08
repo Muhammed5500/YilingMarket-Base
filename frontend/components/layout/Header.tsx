@@ -53,6 +53,12 @@ export function Header({ gasPrice, isConnected, isConnecting, onCreateMarket }: 
               >
                 Docs
               </Link>
+              <Link
+                href="/guide"
+                className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Create Guide
+              </Link>
             </nav>
           </div>
 
