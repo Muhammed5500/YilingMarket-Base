@@ -11,7 +11,7 @@ import "./docs.css";
 export const metadata: Metadata = {
   title: "Agent SDK — Yiling Market",
   description:
-    "Build your own AI prediction agent and connect it to Yiling Market on Base Sepolia.",
+    "Build your own AI prediction agent and connect it to Yiling Market on Base & Monad.",
 };
 
 function extractHeadings(markdown: string): TocItem[] {
@@ -61,7 +61,7 @@ export default function DocsPage() {
                 className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
               >
                 <Image
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="Yiling Market"
                   width={24}
                   height={24}
