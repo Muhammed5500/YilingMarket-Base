@@ -3,19 +3,6 @@ import { defineChain } from "viem";
 import { injected } from "wagmi/connectors";
 import { CHAINS } from "./contracts";
 
-export const baseSepolia = defineChain({
-  id: CHAINS.base.chainId,
-  name: CHAINS.base.name,
-  nativeCurrency: CHAINS.base.nativeCurrency,
-  rpcUrls: {
-    default: { http: [CHAINS.base.rpcUrl] },
-  },
-  blockExplorers: {
-    default: { name: "BaseScan", url: CHAINS.base.explorerUrl },
-  },
-  testnet: true,
-});
-
 export const monadTestnet = defineChain({
   id: CHAINS.monad.chainId,
   name: CHAINS.monad.name,
@@ -30,10 +17,9 @@ export const monadTestnet = defineChain({
 });
 
 export const config = createConfig({
-  chains: [baseSepolia, monadTestnet],
+  chains: [monadTestnet],
   connectors: [injected()],
   transports: {
-    [baseSepolia.id]: http(CHAINS.base.rpcUrl),
     [monadTestnet.id]: http(CHAINS.monad.rpcUrl),
   },
   ssr: true,

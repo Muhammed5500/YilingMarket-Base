@@ -1,4 +1,4 @@
-export type ChainKey = "base" | "monad";
+export type ChainKey = "monad";
 
 export interface ChainConfig {
   key: ChainKey;
@@ -15,19 +15,6 @@ export interface ChainConfig {
 }
 
 export const CHAINS: Record<ChainKey, ChainConfig> = {
-  base: {
-    key: "base",
-    name: "Base Sepolia",
-    chainId: 84532,
-    rpcUrl: "https://sepolia.base.org",
-    explorerUrl: "https://sepolia.basescan.org",
-    contractAddress: "0x100647AC385271d5f955107c5C18360B3029311c",
-    nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-    testnet: true,
-    color: "#0052FF",
-    apiUrl: process.env.NEXT_PUBLIC_BASE_API_URL || process.env.NEXT_PUBLIC_API_URL || "",
-    wsUrl: process.env.NEXT_PUBLIC_BASE_WS_URL || process.env.NEXT_PUBLIC_WS_URL || "",
-  },
   monad: {
     key: "monad",
     name: "Monad Testnet",
@@ -37,13 +24,13 @@ export const CHAINS: Record<ChainKey, ChainConfig> = {
     contractAddress: "0xDb44158019a88FEC76E1aBC1F9fE80c6C87DAD65",
     nativeCurrency: { name: "Monad", symbol: "MON", decimals: 18 },
     testnet: true,
-    color: "#836EF9",
-    apiUrl: process.env.NEXT_PUBLIC_MONAD_API_URL || "",
-    wsUrl: process.env.NEXT_PUBLIC_MONAD_WS_URL || "",
+    color: "#8100D1",
+    apiUrl: process.env.NEXT_PUBLIC_MONAD_API_URL || process.env.NEXT_PUBLIC_API_URL || "",
+    wsUrl: process.env.NEXT_PUBLIC_MONAD_WS_URL || process.env.NEXT_PUBLIC_WS_URL || "",
   },
 };
 
-export const DEFAULT_CHAIN: ChainKey = "base";
+export const DEFAULT_CHAIN: ChainKey = "monad";
 
 // Helper to get chain config by chainId
 export function getChainByChainId(chainId: number): ChainConfig | undefined {
@@ -51,10 +38,10 @@ export function getChainByChainId(chainId: number): ChainConfig | undefined {
 }
 
 // Legacy exports for backward compatibility
-export const CONTRACT_ADDRESS = CHAINS.base.contractAddress;
-export const CHAIN_ID = CHAINS.base.chainId;
-export const RPC_URL = CHAINS.base.rpcUrl;
-export const EXPLORER_URL = CHAINS.base.explorerUrl;
+export const CONTRACT_ADDRESS = CHAINS.monad.contractAddress;
+export const CHAIN_ID = CHAINS.monad.chainId;
+export const RPC_URL = CHAINS.monad.rpcUrl;
+export const EXPLORER_URL = CHAINS.monad.explorerUrl;
 export const WS_URL = process.env.NEXT_PUBLIC_WS_URL || "";
 
 export const CONTRACT_ABI = [

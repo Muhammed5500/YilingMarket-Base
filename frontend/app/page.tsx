@@ -22,28 +22,25 @@ export default function LandingPage() {
   const [marketCount, setMarketCount] = useState(0);
 
   useEffect(() => {
-    const chains = Object.values(CHAINS);
-    Promise.all(
-      chains.map((chain) => {
-        const client = createPublicClient({
-          chain: { id: chain.chainId, name: chain.name, nativeCurrency: chain.nativeCurrency, rpcUrls: { default: { http: [chain.rpcUrl] } } },
-          transport: http(chain.rpcUrl),
-        });
-        return client
-          .readContract({
-            address: chain.contractAddress,
-            abi: CONTRACT_ABI,
-            functionName: "getMarketCount",
-          })
-          .then((count) => Number(count))
-          .catch(() => 0);
-      })
-    ).then((counts) => {
-      const totalMarkets = counts.reduce((a, b) => a + b, 0);
-      setMarketCount(totalMarkets);
-      // 7 AI agents per chain
-      setAgentCount(chains.length * 7);
+    const chain = CHAINS.monad;
+    const client = createPublicClient({
+      chain: { id: chain.chainId, name: chain.name, nativeCurrency: chain.nativeCurrency, rpcUrls: { default: { http: [chain.rpcUrl] } } },
+      transport: http(chain.rpcUrl),
     });
+    client
+      .readContract({
+        address: chain.contractAddress,
+        abi: CONTRACT_ABI,
+        functionName: "getMarketCount",
+      })
+      .then((count) => {
+        setMarketCount(Number(count));
+        setAgentCount(7);
+      })
+      .catch(() => {
+        setMarketCount(0);
+        setAgentCount(7);
+      });
   }, []);
 
   return (
@@ -51,8 +48,8 @@ export default function LandingPage() {
       {/* LightPillar Background */}
       <div className="absolute inset-0">
         <LightPillar
-          topColor="#e07c3f"
-          bottomColor="#d4692a"
+          topColor="#8100D1"
+          bottomColor="#8100D1"
           intensity={0.6}
           rotationSpeed={0.4}
           interactive={false}
@@ -98,8 +95,8 @@ export default function LandingPage() {
         {/* Badge */}
         <div className="mb-6 animate-fadeUp">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-xs font-mono tracking-wider uppercase">
-            <span className="size-1.5 rounded-full bg-[#e07c3f] animate-livePulse" />
-            Live on Base & Monad
+            <span className="size-1.5 rounded-full bg-[#8100D1] animate-livePulse" />
+            Live on Monad
           </span>
         </div>
 
@@ -127,7 +124,7 @@ export default function LandingPage() {
         <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 animate-fadeUp stagger-3">
           <Link
             href="/markets"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#e07c3f] text-white text-sm font-medium transition-all duration-300 hover:bg-[#c96a30] hover:shadow-[0_0_30px_rgba(224,124,63,0.35)] cursor-pointer"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-transparent border border-[#8100D1] text-white text-sm font-medium transition-all duration-300 hover:bg-[#8100D1]/15 hover:shadow-[0_0_30px_rgba(129,0,209,0.35)] cursor-pointer"
           >
             Enter Markets
             <ArrowRight className="size-4" />
@@ -147,7 +144,6 @@ export default function LandingPage() {
             { value: "0", label: "Oracles Needed" },
             { value: String(agentCount), label: "AI Agents" },
             { value: String(marketCount), label: "Markets" },
-            { value: "2", label: "Networks" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-white/90 text-2xl md:text-3xl font-bold tabular-nums" style={{ fontFamily: "var(--font-heading)" }}>

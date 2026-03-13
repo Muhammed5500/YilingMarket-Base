@@ -5,21 +5,21 @@
 <h1 align="center">Yiling Market</h1>
 
 <p align="center">
-  <strong>Oracle-free, self-resolving prediction market protocol on Base</strong>
+  <strong>Oracle-free, self-resolving prediction market protocol on Monad</strong>
 </p>
 
 <p align="center">
-  <a href="https://yilingmarket-onbase.vercel.app">Live App</a> •
-  <a href="https://yilingmarket-onbase.vercel.app/docs">SDK Docs</a> •
+  <a href="https://yilingmarket.vercel.app">Live App</a> •
+  <a href="https://yilingmarket.vercel.app/docs">SDK Docs</a> •
   <a href="https://arxiv.org/abs/2306.04305">Research Paper</a> •
-  <a href="https://sepolia.basescan.org/address/0x100647AC385271d5f955107c5C18360B3029311c">Contract</a>
+  <a href="https://testnet.monadexplorer.com/address/0xDb44158019a88FEC76E1aBC1F9fE80c6C87DAD65">Contract</a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Solidity-0.8.24-363636?style=flat-square" />
   <img src="https://img.shields.io/badge/Node.js-18+-339933?style=flat-square" />
   <img src="https://img.shields.io/badge/Next.js-15-000000?style=flat-square" />
-  <img src="https://img.shields.io/badge/Base_Sepolia-0052FF?style=flat-square" />
+  <img src="https://img.shields.io/badge/Monad_Testnet-836EF9?style=flat-square" />
   <img src="https://img.shields.io/badge/License-AGPL--3.0-blue?style=flat-square" />
 </p>
 
@@ -234,12 +234,12 @@ Where `log₂(x)` is calculated via repeated squaring with 60 iterations of prec
 │  │  • Wallet     │    │  • Orchestrator  │    │              │  │
 │  │    connect    │    │  • Chain watcher │    │  Solidity    │  │
 │  │              │    │                  │    │  0.8.24      │  │
-│  │  Vercel      │    │  Railway         │    │  Base Sepolia│  │
+│  │  Vercel      │    │  Railway         │    │  Monad      │  │
 │  └──────────────┘    └──────────────────┘    └──────────────┘  │
 │                                                                 │
 │  Dashboard URL         API URL                Contract          │
-│  yilingmarket-        web-production-         0x100647AC...     │
-│  onbase.vercel.app    cd132.up.railway.app                      │
+│  yilingmarket.        yilingmarket-           0xDb44158...      │
+│  vercel.app           production.up.railway                     │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -291,7 +291,7 @@ Submit on-chain → predict(marketId, probability) with bond
 Next.js 15 dashboard with:
 - Real-time market monitoring
 - AI-powered question validation (rejects verifiable/short-term questions)
-- Wallet connection with auto Base Sepolia switching
+- Wallet connection with auto Monad Testnet switching
 - Market creation with parameter tuning
 - Agent activity feed and leaderboard
 - Full SDK documentation at `/docs`
@@ -369,11 +369,11 @@ The validation happens off-chain before the on-chain transaction. The smart cont
 
 | Service | URL |
 |---------|-----|
-| **Frontend** | [yilingmarket-onbase.vercel.app](https://yilingmarket-onbase.vercel.app) |
-| **Backend API** | [web-production-cd132.up.railway.app](https://web-production-cd132.up.railway.app/api/health) |
-| **WebSocket** | `wss://web-production-cd132.up.railway.app/ws` |
-| **Contract** | [`0x100647AC385271d5f955107c5C18360B3029311c`](https://sepolia.basescan.org/address/0x100647AC385271d5f955107c5C18360B3029311c) |
-| **Network** | Base Sepolia (Chain ID: 84532) |
+| **Frontend** | [yilingmarket.vercel.app](https://yilingmarket.vercel.app) |
+| **Backend API** | [yilingmarket-production.up.railway.app](https://yilingmarket-production.up.railway.app/api/health) |
+| **WebSocket** | `wss://yilingmarket-production.up.railway.app/ws` |
+| **Contract** | [`0xDb44158019a88FEC76E1aBC1F9fE80c6C87DAD65`](https://testnet.monadexplorer.com/address/0xDb44158019a88FEC76E1aBC1F9fE80c6C87DAD65) |
+| **Network** | Monad Testnet (Chain ID: 10143) |
 
 ### API Endpoints
 
@@ -400,7 +400,7 @@ The contract is **permissionless** — anyone can call `predict()`. No registrat
 ```javascript
 import { ethers } from "ethers";
 
-const CONTRACT = "0x100647AC385271d5f955107c5C18360B3029311c";
+const CONTRACT = "0xDb44158019a88FEC76E1aBC1F9fE80c6C87DAD65";
 const ABI = [
   "function predict(uint256 marketId, uint256 probability) payable",
   "function getMarketCount() view returns (uint256)",
@@ -410,7 +410,7 @@ const ABI = [
   "function hasPredicted(uint256, address) view returns (bool)",
 ];
 
-const provider = new ethers.JsonRpcProvider("https://sepolia.base.org");
+const provider = new ethers.JsonRpcProvider("https://testnet-rpc.monad.xyz");
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 const contract = new ethers.Contract(CONTRACT, ABI, wallet);
 
@@ -433,7 +433,7 @@ setInterval(async () => {
 }, 5000);
 ```
 
-Full SDK documentation: [yilingmarket-onbase.vercel.app/docs](https://yilingmarket-onbase.vercel.app/docs)
+Full SDK documentation: [yilingmarket.vercel.app/docs](https://yilingmarket.vercel.app/docs)
 
 ---
 
@@ -442,7 +442,7 @@ Full SDK documentation: [yilingmarket-onbase.vercel.app/docs](https://yilingmark
 ### Prerequisites
 
 - Node.js 18+
-- Base Sepolia ETH ([faucet](https://www.alchemy.com/faucets/base-sepolia))
+- Monad testnet MON ([faucet](https://faucet.monad.xyz))
 - OpenAI API key
 
 ### 1. Agent System
@@ -453,8 +453,8 @@ npm install
 
 # Configure environment
 cat > ../agents/.env << 'EOF'
-RPC_URL=https://sepolia.base.org
-CONTRACT_ADDRESS=0x100647AC385271d5f955107c5C18360B3029311c
+RPC_URL=https://testnet-rpc.monad.xyz
+CONTRACT_ADDRESS=0xDb44158019a88FEC76E1aBC1F9fE80c6C87DAD65
 OPENAI_API_KEY=sk-...
 AGENT_KEY_1=0x...
 AGENT_KEY_2=0x...
@@ -487,7 +487,7 @@ forge test
 
 # Deploy
 forge script script/Deploy.s.sol \
-  --rpc-url https://sepolia.base.org \
+  --rpc-url https://testnet-rpc.monad.xyz \
   --broadcast --private-key $PRIVATE_KEY
 ```
 
@@ -502,16 +502,17 @@ forge script script/Deploy.s.sol \
 │       └── libraries/
 │           └── FixedPointMath.sol    # On-chain ln(), cross-entropy, WAD math
 │
-├── agents-node/                      # Node.js agent system
-│   ├── run.js                        # Entry point (orchestrate / watch)
-│   ├── baseAgent.js                  # AI agent: observe → reason → act
-│   ├── orchestrator.js               # Agent coordination + dice roll
-│   ├── marketClient.js               # ethers.js contract client
-│   ├── apiServer.js                  # REST API + question validation
-│   ├── eventBroadcaster.js           # WebSocket real-time events
-│   ├── marketWatcher.js              # Chain polling for new markets
-│   ├── profiles.js                   # 7 agent strategy prompts
-│   └── llmProvider.js                # OpenAI provider
+├── backends/
+│   └── monad/                        # Python agent system (Monad)
+│       ├── run.py                    # Entry point (orchestrate / watch)
+│       ├── base_agent.py             # AI agent: observe → reason → act
+│       ├── orchestrator.py           # Agent coordination + dice roll
+│       ├── market_client.py          # web3.py contract client
+│       ├── api_server.py             # REST API + question validation
+│       ├── event_broadcaster.py      # WebSocket real-time events
+│       ├── market_watcher.py         # Chain polling for new markets
+│       ├── agents/profiles.py        # 7 agent strategy prompts
+│       └── llm_providers.py          # LLM provider abstraction
 │
 ├── frontend/                         # Next.js 15 dashboard
 │   ├── app/

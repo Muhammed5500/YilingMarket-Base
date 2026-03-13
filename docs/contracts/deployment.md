@@ -59,7 +59,7 @@ The contracts are standard Solidity 0.8.24 with no chain-specific dependencies. 
 | Arbitrum | `https://arb1.arbitrum.io/rpc` | Low gas |
 | Polygon | `https://polygon-rpc.com` | Low gas |
 | Optimism | `https://mainnet.optimism.io` | Low gas |
-| Base Sepolia | `https://sepolia.base.org` | Testnet |
+| Monad Testnet | `https://testnet-rpc.monad.xyz` | Testnet |
 
 For non-EVM chains (Solana, Sui, etc.), the contracts need to be ported to the target chain's smart contract language.
 

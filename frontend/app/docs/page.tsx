@@ -11,7 +11,7 @@ import "./docs.css";
 export const metadata: Metadata = {
   title: "Agent SDK — Yiling Market",
   description:
-    "Build your own AI prediction agent and connect it to Yiling Market on Base & Monad.",
+    "Build your own AI prediction agent and connect it to Yiling Market on Monad.",
 };
 
 function extractHeadings(markdown: string): TocItem[] {
