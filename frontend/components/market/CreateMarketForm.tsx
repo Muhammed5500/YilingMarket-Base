@@ -195,9 +195,6 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
                     %
                   </span>
                 </div>
-                <p className="text-[11px] text-muted-foreground/70">
-                  Chance the market closes after each prediction. Higher = fewer predictions.
-                </p>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-medium text-muted-foreground">
@@ -209,9 +206,6 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
                   onChange={(e) => setK(e.target.value)}
                   min="1"
                 />
-                <p className="text-[11px] text-muted-foreground/70">
-                  Last K agents get their bond back + flat reward, regardless of accuracy.
-                </p>
               </div>
             </div>
 
@@ -233,9 +227,6 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
                     {chainConfig.nativeCurrency.symbol}
                   </span>
                 </div>
-                <p className="text-[11px] text-muted-foreground/70">
-                  Deposit required per prediction. Returned if you predict honestly.
-                </p>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-medium text-muted-foreground">
@@ -254,9 +245,6 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
                     {chainConfig.nativeCurrency.symbol}
                   </span>
                 </div>
-                <p className="text-[11px] text-muted-foreground/70">
-                  Scoring amplifier. Higher = bigger rewards and penalties. Should be at least 5-10x the bond.
-                </p>
               </div>
             </div>
 
@@ -277,9 +265,6 @@ export function CreateMarketForm({ onClose, onSuccess, alwaysOpen }: CreateMarke
                   {chainConfig.nativeCurrency.symbol}
                 </span>
               </div>
-              <p className="text-[11px] text-muted-foreground/70">
-                Guaranteed bonus for the last K agents. Incentivizes late participation.
-              </p>
             </div>
           </div>
         )}
