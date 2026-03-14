@@ -74,7 +74,7 @@ export default function LandingPage() {
       {/* Top nav */}
       <nav className="relative z-10 flex items-center justify-between px-6 py-5">
         <div className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="Yiling Market" width={32} height={32} />
+          <Image src="/logo.svg" alt="Yiling Market" width={32} height={32} />
           <span className="text-white/90 text-lg font-bold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
             Yiling Market
           </span>
