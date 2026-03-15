@@ -39,7 +39,7 @@ export function Header({ gasPrice, isConnected, isConnecting, onCreateMarket }: 
 
             <nav className="hidden md:flex items-center gap-6">
               <a
-                href="https://yiling-protocol-landing.vercel.app"
+                href="https://yilingprotocol.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"

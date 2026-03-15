@@ -80,7 +80,7 @@ export default function LandingPage() {
           </span>
         </div>
         <a
-          href="https://yiling-protocol-landing.vercel.app"
+          href="https://yilingprotocol.com"
           target="_blank"
           rel="noopener noreferrer"
           className="text-white/50 text-sm hover:text-white/80 transition-colors flex items-center gap-1.5"
